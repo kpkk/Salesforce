@@ -17,7 +17,6 @@ pipeline {
 
         stage('smoke test') {
           steps {
-            git(branch: 'master', url: 'https://github.com/kpkk/Salesforce/tree/master/Salesforce')
             bat 'mvn -f Salesforce/pom.xml test -Durl="https://login.salesforce.com"'
           }
         }
