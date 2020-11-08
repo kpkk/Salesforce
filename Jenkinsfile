@@ -17,7 +17,7 @@ pipeline {
 
         stage('smoke test') {
           steps {
-            bat 'mvn test -Durl="https://login.salesforce.com"'
+            bat 'mvn test'
           }
         }
 
