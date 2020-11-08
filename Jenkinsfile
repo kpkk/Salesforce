@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('QA') {
-      steps {
-        git(url: 'https://github.com/kpkk/Salesforce.git', branch: 'master')
+      parallel {
+        stage('QA') {
+          steps {
+            git(url: 'https://github.com/kpkk/Salesforce.git', branch: 'master')
+          }
+        }
+
+        stage('smoke test') {
+          steps {
+            bat 'mvn test -Durl="https://login.salesforce.com"'
+          }
+        }
+
       }
     }
 
